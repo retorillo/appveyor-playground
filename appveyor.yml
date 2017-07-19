@@ -1,0 +1,13 @@
+version: 1.0.{build}
+image: Visual Studio 2015
+platform:
+  - x64
+configuration:
+  - Debug
+  - Release
+artifacts:
+  - path: x64\testapp.exe
+    name: testapp.exe(x64)
+build:
+  project: app.xml
+  verbosity: normal
