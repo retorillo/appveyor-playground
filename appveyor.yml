@@ -1,15 +1,20 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 environment:
-  _TARGET_PLATFORM: 8.1
+  _PlatformToolset: v141
+  _TargetPlatform: 8.1
+  _SkipTest: true
 platform:
   - x64
 configuration:
   - Debug
   - Release
 artifacts:
-  - path: x64\testapp.exe
-    name: testapp.exe(x64)
+  - path: '**\*.exe'
 build:
-  project: app.xml
+  project: build.xml
   verbosity: normal
+test:
+  assemblies:
+    only:
+      - '**\*.dll'

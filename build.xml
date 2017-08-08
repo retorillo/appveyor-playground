@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PlatformToolset Condition="'$(_PlatformToolset)'==''">v140</_PlatformToolset>
+    <_TargetPlatform Condition="'$(_TargetPlatform)'==''">8.1</_TargetPlatform>
+    <TargetPlatformVersion>$(_TargetPlatform)</TargetPlatformVersion>
+  </PropertyGroup>
+  <Target Name="Build">
+    <MsBuild Projects="app.xml;test.xml" />
+  </Target>
+</Project>

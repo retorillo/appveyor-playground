@@ -6,10 +6,9 @@ int CALLBACK WinMain(HINSTANCE i, HINSTANCE p, LPSTR c, int n) {
   return foobar != L"C:\\foo\\bar";
 }
 std::wstring combine(std::wstring l, std::wstring r) {
-  auto L = l.length() + r.length() + 1;
-  WCHAR* b = new WCHAR[L];
-  PathCchCombine(b, L, l.c_str(), r.c_str());
+  WCHAR* b;
+  PathAllocCombine(l.c_str(), r.c_str(), PATHCCH_ALLOW_LONG_PATHS, &b);
   std::wstring w(b);
-  delete b;
+  LocalFree(b);
   return w;
 }
