@@ -11,6 +11,8 @@ configuration:
   - Release
 artifacts:
   - path: '**\*.exe'
+    name: emit-x_{platform}.exe
+    type: zip
 build:
   project: build.xml
   verbosity: normal
