@@ -10,9 +10,7 @@ configuration:
   - Debug
   - Release
 artifacts:
-  - path: '**\*.exe'
-    name: emit-x_{platform}.exe
-    type: zip
+  - path: '**\*.zip'
 build:
   project: build.xml
   verbosity: normal

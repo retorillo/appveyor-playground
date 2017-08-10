@@ -14,4 +14,10 @@
   <ItemGroup>
     <ClCompile Include="app.cpp" />
   </ItemGroup>
+  <Target Name="AfterBuild">
+    <SetEnv Name="OutDir" Prefix="false" Value="$(OutDir)" />
+    <SetEnv Name="ProjectName" Prefix="false" Value="$(ProjectName)" />
+    <SetEnv Name="PlatformTarget" Prefix="false" Value="$(PlatformTarget)" />
+    <Exec Command="pack.bat" />
+  </Target>
 </Project>
