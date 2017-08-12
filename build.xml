@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PlatformToolset Condition="'$(PlatformToolset)'==''">v140</PlatformToolset>
     <TargetPlatformVersion Condition="'$(TargetPlatformVersion)'==''">8.1</TargetPlatformVersion>
   </PropertyGroup>
   <Target Name="Build">
-    <MsBuild Projects="app.xml;test.xml" />
+    <MsBuild Projects="app.xml" />
+    <CallTarget Targets="RunTest" Condition="'$(CI)'==''" />
+  </Target>
+  <Target Name="RunTest">
+    <MsBuild Projects="test.xml" />
   </Target>
 </Project>

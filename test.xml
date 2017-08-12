@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build;RunTest" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="config.xml" />
   <Import Project="$(VCTargetsPath)Microsoft.Cpp.default.props" />
   <PropertyGroup>
@@ -21,7 +21,13 @@
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <Target Name="RunTest" Condition="'$(SkipTest)'==''">
-    <Exec Command="vstest.console /Platform:$(PlatformTarget) /InIsolation %(Link.OutputFile)" />
+  <Target Name="AfterBuild">
+    <PropertyGroup>
+      <VSTest>vstest.console</VSTest>
+      <VSTest>$(VSTest) /Platform:$(PlatformTarget)</VSTest>
+      <VSTest>$(VSTest) /InIsolation</VSTest>
+      <VSTest Condition="'$(APPVEYOR)'=='True'">$(VSTest) /logger:Appveyor</VSTest>
+    </PropertyGroup>
+    <Exec Command="$(VSTest) %(Link.OutputFile)" />
   </Target>
 </Project>

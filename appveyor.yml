@@ -3,7 +3,6 @@ image: Visual Studio 2017
 environment:
   PlatformToolset: v141
   TargetPlatformVersion: 8.1
-  SkipTest: true
   BuildVersion: $(version)_$(APPVEYOR_BUILD_VERSION)
 platform:
   - x64
@@ -16,4 +15,4 @@ build:
   project: build.xml
   verbosity: normal
 test_script:
-  - cmd: vstest.console /logger:Appveyor /Platform:%platform% /InIsolation build/test/%configuration%/%platform%/test.dll
+  - cmd: msbuild build.xml /t:RunTest
