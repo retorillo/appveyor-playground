@@ -1,9 +1,10 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 environment:
-  _PlatformToolset: v141
-  _TargetPlatform: 8.1
-  _SkipTest: true
+  PlatformToolset: v141
+  TargetPlatformVersion: 8.1
+  SkipTest: true
+  BuildVersion: {version}
 platform:
   - x64
 configuration:

@@ -4,7 +4,6 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup>
     <ProjectName>app</ProjectName>
-    <PlatformToolset>$(_PlatformToolset)</PlatformToolset>
     <OutDir>build\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)cache\</IntDir>
     <TLogLocation>$(IntDir)</TLogLocation>
@@ -18,6 +17,7 @@
     <SetEnv Name="OutDir" Prefix="false" Value="$(OutDir)" />
     <SetEnv Name="ProjectName" Prefix="false" Value="$(ProjectName)" />
     <SetEnv Name="PlatformTarget" Prefix="false" Value="$(PlatformTarget)" />
+    <SetEnv Name="BuildVersion" Prefix="false" Value="$(BuildVersion)" />
     <Exec Command="pack.bat" />
   </Target>
 </Project>
