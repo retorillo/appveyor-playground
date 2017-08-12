@@ -4,7 +4,7 @@ environment:
   PlatformToolset: v141
   TargetPlatformVersion: 8.1
   SkipTest: true
-  BuildVersion: {APPVEYOR_BUILD_VERSION}
+  BuildVersion: "{version}"
 platform:
   - x64
 configuration:
